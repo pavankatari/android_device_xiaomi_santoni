@@ -16,6 +16,10 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <Preference
+    	android:key="@string/ui_theme_preference_key"
+	android:title="@string/ui_theme_preference_title" />
+   
     <SwitchPreference
         android:key="ambient_display"
         android:defaultValue="true"

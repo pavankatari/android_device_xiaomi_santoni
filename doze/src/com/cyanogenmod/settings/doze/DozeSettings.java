@@ -33,8 +33,9 @@ import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-public class DozeSettings extends PreferenceActivity implements OnPreferenceChangeListener {
+public class DozeSettings extends PreferenceActivity implements OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
     private Context mContext;
     private SharedPreferences mPreferences;
@@ -44,18 +45,37 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
     private SwitchPreference mHandwavePreference;
     private SwitchPreference mPocketPreference;
 
+    private Preference mUiPreference;
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) { 
+        // get shared preference
+        mPreferences = DozeSettings.this.getSharedPreferences("doze_settings", Activity.MODE_PRIVATE);
+	// get theme name of last session from shared preferences
+        String prevTheme = mPreferences.getString(Utils.UI_THEME_PREFERENCE_KEY, null);
+	// apply suitable theme
+        if (prevTheme != null && prevTheme.equals("Black")) {
+            DozeSettings.this.setTheme(R.style.BlackTheme);
+        } else if (prevTheme != null && prevTheme.equals("Dark")) {
+            DozeSettings.this.setTheme(R.style.DarkTheme);
+        } else {
+            DozeSettings.this.setTheme(R.style.LightTheme);
+        }
+
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.doze_settings);
         mContext = getApplicationContext();
         boolean dozeEnabled = Utils.isDozeEnabled(mContext);
 
-        // get shared preference
-        mPreferences = mContext.getSharedPreferences("doze_settings", Activity.MODE_PRIVATE);
         if (savedInstanceState == null && !mPreferences.getBoolean("first_help_shown", false)) {
             showHelp();
         }
+
+        mUiPreference = findPreference(Utils.UI_THEME_PREFERENCE_KEY);
+	if (prevTheme == null) {
+		mUiPreference.setSummary(mContext.getResources().getString(R.string.ui_theme_preference_summary));
+	}
+	mUiPreference.setOnPreferenceClickListener(this);
 
         mAmbientDisplayPreference =
             (SwitchPreference) findPreference(Utils.AMBIENT_DISPLAY_KEY);
@@ -145,4 +165,38 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
         HelpDialogFragment fragment = new HelpDialogFragment();
         fragment.show(getFragmentManager(), "help_dialog");
     }
+
+   @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
+    } 
+
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+        if (preference.getKey().equals(Utils.UI_THEME_PREFERENCE_KEY)) {
+            AlertDialog.Builder chooseThemeDialog = new AlertDialog.Builder(DozeSettings.this);
+                chooseThemeDialog.setTitle(R.string.ui_theme_preference_title)
+                        .setItems(R.array.ui_theme_preference_choice, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                setThemeDynamic(which);
+                            }
+                        });
+                chooseThemeDialog.create();
+                chooseThemeDialog.show();
+                return true;
+        }
+        return false;
+    }
+
+    private void setThemeDynamic(int which) {
+        SharedPreferences.Editor editor = DozeSettings.this.getSharedPreferences("doze_settings", MODE_PRIVATE)
+                .edit();
+        editor.putString(Utils.UI_THEME_PREFERENCE_KEY, Utils.UI_THEME_PREFERENCE_CHOICE[which]);
+        editor.apply();
+        mUiPreference.setSummary(Utils.UI_THEME_PREFERENCE_CHOICE[which]);
+        Toast.makeText(DozeSettings.this, Utils.UI_THEME_PREFERENCE_CHOICE[which]+" Theme Applied", Toast.LENGTH_SHORT).show();
+        DozeSettings.this.recreate();
+    }
+
 }

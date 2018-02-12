@@ -38,6 +38,9 @@ public final class Utils {
     protected static final String GESTURE_HAND_WAVE_KEY = "gesture_hand_wave";
     protected static final String GESTURE_POCKET_KEY = "gesture_pocket";
 
+    protected static final String UI_THEME_PREFERENCE_KEY = "ui_theme_preference_key";
+    protected static final String[] UI_THEME_PREFERENCE_CHOICE = {"Light", "Dark", "Black"};
+
     protected static void startService(Context context) {
         if (DEBUG) Log.d(TAG, "Starting service");
         context.startService(new Intent(context, DozeService.class));
