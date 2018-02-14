@@ -74,6 +74,8 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
         mUiPreference = findPreference(Utils.UI_THEME_PREFERENCE_KEY);
 	if (prevTheme == null) {
 		mUiPreference.setSummary(mContext.getResources().getString(R.string.ui_theme_preference_summary));
+	} else {
+        	mUiPreference.setSummary(prevTheme);
 	}
 	mUiPreference.setOnPreferenceClickListener(this);
 
@@ -194,7 +196,6 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
                 .edit();
         editor.putString(Utils.UI_THEME_PREFERENCE_KEY, Utils.UI_THEME_PREFERENCE_CHOICE[which]);
         editor.apply();
-        mUiPreference.setSummary(Utils.UI_THEME_PREFERENCE_CHOICE[which]);
         Toast.makeText(DozeSettings.this, Utils.UI_THEME_PREFERENCE_CHOICE[which]+" Theme Applied", Toast.LENGTH_SHORT).show();
         DozeSettings.this.recreate();
     }
