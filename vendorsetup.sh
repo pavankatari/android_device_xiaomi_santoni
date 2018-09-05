@@ -21,5 +21,5 @@
 # function: add_lunch_combo generic-eng
 
 for var in eng user userdebug; do
-  add_lunch_combo arrow_santoni-userdebug
+  add_lunch_combo syberia_santoni-userdebug
 done

@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017 The ArrowOS Project
+# Copyright (C) 2017 The SyberiaOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@
 
 $(call inherit-product, device/xiaomi/santoni/full_santoni.mk)
 
-# Inherit some common ArrowOS stuff.
-$(call inherit-product, vendor/arrow/config/common.mk)
+# Inherit some common SyberiaOS stuff.
+$(call inherit-product, vendor/syberia/config/common.mk)
 
 PRODUCT_DEVICE := santoni
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Redmi 4X
-PRODUCT_NAME := arrow_santoni
+PRODUCT_MODEL := Redmi 4
+PRODUCT_NAME := syberia_santoni
 BOARD_VENDOR := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
 

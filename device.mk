@@ -16,8 +16,6 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-$(call inherit-product, vendor/extra/product.mk)
-
 $(call inherit-product, vendor/xiaomi/santoni/santoni-vendor.mk)
 
 # Overlays
