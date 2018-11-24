@@ -13,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 # This file is executed by build/envsetup.sh, and can use anything
 # defined in envsetup.sh.
 #
