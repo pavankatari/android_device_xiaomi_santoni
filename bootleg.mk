@@ -27,13 +27,12 @@ BOARD_VENDOR := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
 
 # Build Official Bootleggers-Future
-BOOTLEG_BUILD_TYPE := HomeMade(PavanKatari)
-
+BOOTLEGGERS_BUILDTYPE := HomeMade(PavanKatari)
 DEVICE_MAINTAINERS="PavanKatari"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.bootleg.maintainer="pavankatari"
-
+    
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
@@ -41,3 +40,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
 BUILD_FINGERPRINT := "Xiaomi/santoni/santoni:7.1.2/N2G47H/V9.5.10.0.NAMMIFD:user/release-keys"
+
+# Bootanimation
+-include vendor/syberia/config/bootanimation.mk
