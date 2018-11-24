@@ -26,8 +26,8 @@ PRODUCT_NAME := bootleg_santoni
 BOARD_VENDOR := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
 
-# Build Official Bootleggers-Future
-BOOTLEGGERS_BUILDTYPE := HomeMade(PavanKatari)
+# Build  Type
+BOOTLEG_BUILD_TYPE := HomeMade(PavanKatari)
 DEVICE_MAINTAINERS="PavanKatari"
 
 PRODUCT_PROPERTY_OVERRIDES += \
