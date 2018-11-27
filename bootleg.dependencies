@@ -5,6 +5,6 @@
  },
  {
     "repository": "android_vendor_xiaomi_santoni",
-    "target_path": "vendor/xiaomi"
+    "target_path": "vendor/xiaomi/santoni"
  }
 ]
