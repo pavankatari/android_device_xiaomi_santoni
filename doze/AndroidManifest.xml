@@ -38,7 +38,7 @@
                 android:value="com.android.settings.category.device" />
             <meta-data
                 android:name="com.android.settings.icon"
-                android:resource="@drawable/ic_settings_doze" />
+                android:resource="@drawable/ic_mi" />
             <meta-data android:name="com.android.settings.summary"
                 android:resource="@string/screen_gestures_panel_dashboard_summary" />
         </activity>
