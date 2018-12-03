@@ -39,6 +39,9 @@ PRODUCT_MANUFACTURER := Xiaomi
 PD_BUILDTYPE := Official
 DEVICE_MAINTAINERS="Sankar"
 
+# Pixel Dust ROM package name 
+PIXELDUST_VERSION := $(TARGET_PRODUCT)-pie-release-$(shell date -u +%Y%m%d-%H%M)
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="sankar"
 
