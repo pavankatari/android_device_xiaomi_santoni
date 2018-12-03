@@ -19,6 +19,8 @@ $(call inherit-product, device/xiaomi/santoni/full_santoni.mk)
 # Inherit pixeldust vendor.
 $(call inherit-product, vendor/pixeldust/configs/pixeldust_phone.mk)
 
+$(call inherit-product, vendor/googleapps/googleapps.mk)
+
 # Boot Animation
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
