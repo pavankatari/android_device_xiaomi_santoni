@@ -16,22 +16,29 @@
 
 $(call inherit-product, device/xiaomi/santoni/full_santoni.mk)
 
-# Inherit some common ArrowOS stuff.
-$(call inherit-product, vendor/bootleggers/config/common_full_phone.mk)
+# Inherit pixeldust vendor.
+$(call inherit-product, vendor/pixeldust/configs/pixeldust_phone.mk)
+
+# Boot Animation
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
+
+# Include optional stuff (e.g. prebuilt apps)
+include vendor/pixeldust/configs/system_optional.mk
 
 PRODUCT_DEVICE := santoni
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi 4
-PRODUCT_NAME := bootleg_santoni
+PRODUCT_NAME := pixeldust_santoni
 BOARD_VENDOR := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
 
 # Build  Type
-BOOTLEGGERS_BUILD_TYPE := HomeMade@PavanKatari
-DEVICE_MAINTAINERS="PavanKatari"
+BOOTLEGGERS_BUILD_TYPE := Official
+DEVICE_MAINTAINERS="Sankar"
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.bootleg.maintainer="pavankatari"
+    ro.pixeldust.maintainer="sankar"
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
@@ -40,6 +47,19 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
 BUILD_FINGERPRINT := "Xiaomi/santoni/santoni:7.1.2/N2G47H/V9.5.10.0.NAMMIFD:user/release-keys"
+
+#Apps
+PRODUCT_PACKAGES += \
+    Camera2 \
+    Gallery2 \
+    Music \
+    Calendar \
+    DeskClock \
+    Email \
+    Launcher3
+    
+# Use SDCLANG
+TARGET_USE_SDCLANG := true
 
 
 
