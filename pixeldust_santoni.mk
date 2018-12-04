@@ -16,6 +16,9 @@
 
 $(call inherit-product, device/xiaomi/santoni/full_santoni.mk)
 
+# Get the long list of APNs
+PRODUCT_COPY_FILES := device/moto/shamu/apns-full-conf.xml:system/etc/apns-conf.xml
+
 # Inherit pixeldust vendor.
 $(call inherit-product, vendor/pixeldust/configs/pixeldust_phone.mk)
 
