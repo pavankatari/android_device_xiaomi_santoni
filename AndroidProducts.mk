@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/Baikalos_santoni.mk
+    $(LOCAL_DIR)/baikalos_santoni.mk
