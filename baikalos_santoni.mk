@@ -26,12 +26,12 @@ PRODUCT_NAME := baikalos_santoni
 BOARD_VENDOR := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
 
-# Build  Type
-BOOTLEGGERS_BUILD_TYPE := HomeMade@PavanKatari
-DEVICE_MAINTAINERS="PavanKatari"
+# BaikalOS BUILD_TYPE
+BAIKALOS_BUILD_TYPE := OFFICIAL
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.bootleg.maintainer="pavankatari"
+# BaikalOS Device Maintainers
+PRODUCT_BUILD_PROP_OVERRIDES += \
+     DEVICE_MAINTAINERS="@SankarVIP"
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
